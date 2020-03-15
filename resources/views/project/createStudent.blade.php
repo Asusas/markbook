@@ -4,7 +4,7 @@
     <div class="container">
         <div class=" col-md-6 mx-auto"> 
             <h1>Prideti studenta:</h1>
-            <form action="{{route('students.index')}}" method="post">
+            <form action="{{route('students.store')}}" method="post">
                 @csrf
                 <div class="form-group">
                     <input class="form-control" type="text" name="name" placeholder="Vardas">

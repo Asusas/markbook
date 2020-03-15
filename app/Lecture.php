@@ -12,5 +12,4 @@ class Lecture extends Model
     {
         return $this->hasMany('App\Grade', 'lecture_id', 'id');
     }
-    
 }
