@@ -8,20 +8,20 @@
                 <div class="col-md-6 mx-auto">
                     <a class="btn btn-warning btn-sm btn-block" href="{{route('students.create')}}">Prideti studenta</a>
                     <a class="btn btn-success btn-sm btn-block" href="{{route('lectures.create')}}">Prideti pamoka</a>
-                    <a class="btn btn-danger btn-sm btn-block" href="{{route('grades.create')}}">Tvarkyti pazymius</a>
+                    <a class="btn btn-danger btn-sm btn-block" href="{{route('grades.create')}}">Rasyti pazymius</a>
                 </div>
             @endauth
         </div>
         <div class="row">
             <div class="col-md-8">
                 <hr>
-                <table class="table table-bordered table-hover">
+                <table class="table  table-hover">
                     <thead>
                         <h4 class="text-center">Studentai</h4>
                         <tr>
                             <th>Vardas</th>
                             <th>Pavarde</th>
-                            <th>Veiksmai</th>
+                            @auth <th>Veiksmai</th>@endauth
                         </tr>
                     </thead>
                     <tbody>
@@ -30,7 +30,9 @@
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->surname}}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-secondary btn-sm " href="{{route('students.show', $item->id )}}">Perziureti</a>
+                                    @auth 
+                                        <a class="btn btn-secondary btn-sm " href="{{route('students.show', $item->id )}}">Perziureti</a>
+                                     @endauth
                                 </td>
                             </tr>
                         @endforeach

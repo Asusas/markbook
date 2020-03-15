@@ -7,7 +7,7 @@
                 <img src="" class="card-img-top" alt="">
                 <div class="card-body">
                   <h5 class="card-title">Studento informacija</h5>
-                <p class="card-text">{{$student->name}} {{$student->surname}}</p>
+                <p class="card-text"><b>{{$student->name}} {{$student->surname}}</b></p>
                 </div>
                 <table class="table table-bordered text-center">
                     
@@ -23,10 +23,10 @@
                     <tr>
                         <td>Pažymiai</td>
                     {{-- sita foreacha sukame, kad mums sukurtu tiek laukeliu, kiek yra paskaitu, nei daugiau, nei maziau--}}
-                    
+
                         @foreach ($lecture as $key)
 
-                    {{-- tada kuriame stulpeli, kuriame tikrinsime salyga, ar studento ir sutampa su pazymio (student_id), jeigu sutampa, tai--}}
+                    {{-- tada kuriame stulpeli, kuriame tikrinsime salyga, ar studento id sutampa su pazymio (student_id), jeigu sutampa, tai--}}
                     {{--  ideda pazymi, i spana, ir i td vidu, jeigu salyga netenkina, palieka tuscia td--}}
                             <td>
                                 @foreach($key->grade as $item)
@@ -41,7 +41,7 @@
 
                     <tr>
                         <td>Vidurkis</td>
-                        <td>(Cia bus vidurkis)</td>
+                        <td>Vidurkis ??</td>
                     </tr>
 
                 </table>
