@@ -18,9 +18,18 @@
                         @endforeach
                     </tr>
                     <tr>
-                        <td></td>
-                        @foreach ($student->grade as $item)
-                            <td>{{$item->grade}}</td>
+                        <td>Pažymiai</td>
+{{--                        sita foreacha sukame, kad mums sukurtu tiek laukeliu, kiek yra paskaitu, nei daugiau, nei maziau--}}
+                        @foreach ($lecture as $key)
+{{--                            tada kuriame stulpeli, kuriame tikrinsime salyga, ar studento ir sutampa su pazymio (student_id), jeigu sutampa, tai--}}
+{{--                            ideda pazymi, i spana, ir i td vidu, jeigu salyga netenkina, palieka tuscia td--}}
+                            <td>
+                                @foreach($key->grade as $item)
+                                    @if($student->id == $item->student_id)
+                                        <span>{{$item->grade}}</span>
+                                    @endif
+                                @endforeach
+                            </td>
                         @endforeach
                     </tr>
                     <tr>
