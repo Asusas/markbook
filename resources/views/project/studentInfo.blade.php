@@ -31,7 +31,7 @@
                             <td>
                                 @foreach($key->grade as $item)
                                     @if($student->id == $item->student_id)
-                                        <span class="btn-info btn-sm">{{$item->grade}}</span>
+                                        <a href="{{route('grades.edit', $item->id)}}"><span class="btn-info btn-sm">{{$item->grade}}</span></a> 
                                     @endif
                                 @endforeach
                             </td>
@@ -40,15 +40,27 @@
                     </tr>
 
                     <tr>
-                        <td>Vidurkis</td>
+                        <td>Vidurkis <strong style="font-size:20px">&#8680;</strong></td>
                         <td>Vidurkis ??</td>
                     </tr>
 
+                    <tr>
+                        <td>
+                            <form action="{{route('students.destroy', $student->id )}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <input type="submit" class="btn btn-sm btn-danger btn-block" value="Istrinti mokini">
+                            </form>
+                            <hr>
+                            <a href="{{route('students.edit', $student->id )}}" class="btn btn-primary btn-sm btn-block">Redaguoti mokini</a>
+                        </td>
+                    </tr>
+
+
                 </table>
-                <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
+                
+                    
+                
               </div>
         </div>
     </div>

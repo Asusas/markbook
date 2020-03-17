@@ -57,7 +57,7 @@ class GradeController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -68,7 +68,8 @@ class GradeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $grade = Grade::findOrFail($id);
+        return view('project.editGrade', compact('grade'));
     }
 
     /**
@@ -80,7 +81,12 @@ class GradeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $grade = Grade::findOrFail($id);
+        $grade->grade = $request->input('grade');
+        $grade->save();
+
+        return redirect()->route('students.index');
+
     }
 
     /**
@@ -91,6 +97,8 @@ class GradeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $grade = Grade::findOrFail($id);
+        $grade->delete();
+        return redirect()->route('students.index');
     }
 }
