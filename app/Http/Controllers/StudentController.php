@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checkAdmin')->only('show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +22,7 @@ class StudentController extends Controller
      */
     public function index()
     {
+
         $lecture = Lecture::all();
         $student = Student::all();
         return view('project.index', compact(['student', 'lecture']));

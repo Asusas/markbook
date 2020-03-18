@@ -18,6 +18,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('students', 'StudentController');
+Route::resource('students', 'StudentController')->middleware('checkAdmin');
 Route::resource('lectures', 'LectureController');
 Route::resource('grades', 'GradeController');

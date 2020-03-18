@@ -3,6 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row">
+            
+
             <h1><strong>Elektronine pazymiu knygele</strong></h1>
             @auth
                 <div class="col-md-6 mx-auto">
