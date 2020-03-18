@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 
 class CheckRole
@@ -15,9 +16,11 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->admin == 0) {
+
+        if (auth()->user()->admin == 1) {
             return $next($request);
         }
-        return redirect()->route('students.index')->with('error', 'Sio puslapio perziurai jus neturite leidimo');
+        return redirect('/')->with('error', 'Sio puslapio perziurai jus neturite leidimo');
+
     }
 }

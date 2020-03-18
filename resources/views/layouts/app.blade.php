@@ -50,7 +50,7 @@
                                 </li>
                             @endif
                         @else
-                            <a class="nav-link toggle" href="{{route('students.index')}}">Administratoriaus penele</a>
+                            <a class="nav-link toggle" href="{{route('students.index')}}">Pradzia</a>
                             <p class="nav-link">Prisijunges -> {{auth()->user()->admin==1 ? 'Administratorius':'Studentas'}}</p>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -78,12 +78,16 @@
         </nav>
 
         <main class="py-4">
+            
+                    <div class=" col-md-8 mx-auto">
 
-            @if(session('error'))
-                <div class=" alert alert-danger" role="alert">
-                        {{session('error')}}
-                </div> 
-            @endif
+                        @if(session('error'))
+                            <div class=" alert alert-danger" role="alert">
+                                    {{session('error')}}
+                            </div> 
+                        @endif
+                   
+                    </div>
 
             @yield('content')
         </main>

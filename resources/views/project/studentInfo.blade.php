@@ -43,18 +43,19 @@
                         <td>Vidurkis <strong style="font-size:20px">&#8680;</strong></td>
                         <td>Vidurkis ??</td>
                     </tr>
-
-                    <tr>
-                        <td>
-                            <form action="{{route('students.destroy', $student->id )}}" method="post">
-                                @csrf
-                                @method('delete')
-                                <input type="submit" class="btn btn-sm btn-danger btn-block" value="Istrinti mokini">
-                            </form>
-                            <hr>
-                            <a href="{{route('students.edit', $student->id )}}" class="btn btn-primary btn-sm btn-block">Redaguoti mokini</a>
-                        </td>
-                    </tr>
+                    @if(Auth::user()->admin == 1)
+                        <tr>
+                            <td>
+                                <form action="{{route('students.destroy', $student->id )}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="submit" class="btn btn-sm btn-danger btn-block" value="Istrinti mokini">
+                                </form>
+                                <hr>
+                                <a href="{{route('students.edit', $student->id )}}" class="btn btn-primary btn-sm btn-block">Redaguoti mokini</a>
+                            </td>
+                        </tr>
+                    @endif
 
 
                 </table>

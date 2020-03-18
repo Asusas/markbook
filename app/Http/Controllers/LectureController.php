@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class LectureController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('checkAdmin')->only('create');
+    }
     /**
      * Display a listing of the resource.
      *

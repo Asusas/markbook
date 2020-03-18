@@ -12,7 +12,8 @@ class StudentController extends Controller
 
     public function __construct()
     {
-        $this->middleware('checkAdmin')->only('show');
+
+        $this->middleware('checkAdmin')->only('create');
     }
 
     /**
@@ -65,6 +66,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
+
         $lecture = Lecture::all();
         $student = Student::findOrFail($id);
         return view('project.studentInfo', compact(['student', 'lecture']));

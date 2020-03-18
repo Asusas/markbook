@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class GradeController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('checkAdmin')->only('create');
+    }
     /**
      * Display a listing of the resource.
      *
