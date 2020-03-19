@@ -23,7 +23,7 @@
                         <tr>
                             <th>Vardas</th>
                             <th>Pavarde</th>
-                            @auth <th>Veiksmai</th>@endauth
+                            @auth <th>Informacija</th>@endauth
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +33,7 @@
                                 <td>{{$item->surname}}</td>
                                 <td class="text-center">
                                     @auth 
-                                        <a class="btn btn-secondary btn-sm " href="{{route('students.show', $item->id )}}">Perziureti</a>
+                                        <a class="btn btn-secondary btn-sm float-left" href="{{route('students.show', $item->id )}}">Perziureti</a>
                                      @endauth
                                 </td>
                             </tr>
