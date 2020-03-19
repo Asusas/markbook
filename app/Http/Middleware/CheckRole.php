@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\User;
 use Closure;
+use Illuminate\Support\Facades\Session;
 
 class CheckRole
 {
@@ -20,7 +21,8 @@ class CheckRole
         if (auth()->user()->admin == 1) {
             return $next($request);
         }
-        return redirect('/')->with('error', 'Sio puslapio perziurai jus neturite leidimo');
+        Session::flash('error', 'Sio puslapio perziurai jums reikia administratoriaus leidimo!');
+        return redirect('/');
 
     }
 }

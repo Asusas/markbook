@@ -7,10 +7,10 @@
 
             <h1><strong>Elektronine pazymiu knygele</strong></h1>
             @auth
-                <div class="col-md-6 mx-auto">
-                    <a class="btn btn-warning btn-sm btn-block" href="{{route('students.create')}}">Prideti studenta</a>
-                    <a class="btn btn-success btn-sm btn-block" href="{{route('lectures.create')}}">Prideti pamoka</a>
-                    <a class="btn btn-danger btn-sm btn-block" href="{{route('grades.create')}}">Rasyti pazymius</a>
+                <div class="col-md-6 mx-auto ">
+                    <a class="btn btn-light   float-right" href="{{route('students.create')}}"><b>Prideti studenta</b></a>
+                    <a class="btn btn-light  float-right" href="{{route('lectures.create')}}"><b>Prideti pamoka</b> </a>
+                    <a class="btn btn-light   float-right" href="{{route('grades.create')}}"><b>Rasyti pazymius</b></a>
                 </div>
             @endauth
         </div>

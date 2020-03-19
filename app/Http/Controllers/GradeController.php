@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Grade;
+use App\Http\Requests\GradeRequest;
 use App\Lecture;
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class GradeController extends Controller
 {
@@ -43,8 +45,11 @@ class GradeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GradeRequest $request)
     {
+
+        $grade = $request->validated();
+
         $grade = new Grade;
         $grade->grade = $request->input('grade');
         $grade->lecture_id = $request->input('lecture');
@@ -52,7 +57,9 @@ class GradeController extends Controller
 
         $grade->save();
 
-        return redirect()->route('students.index');
+        Session::flash('status', 'Mokinys ivertintas!');
+
+        return redirect()->back();
     }
 
     /**

@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
  */
 Route::get('/', 'StudentController@index');
 
+
+
 Auth::routes();
 
 Route::get('/home', 'StudentController@index')->name('home');

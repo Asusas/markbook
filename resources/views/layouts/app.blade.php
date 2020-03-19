@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale('')) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -64,6 +64,9 @@
                                         {{ __('Logout') }}
                                     </a>
 
+                                    {{-- <a class="dropdown-item" href="">Englisk</a>
+                                    <a class="dropdown-item" href="">Lithuanian</a> --}}
+
 
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -78,15 +81,31 @@
         </nav>
 
         <main class="py-4">
-            
-                    <div class=" col-md-7 mx-auto">
 
-                        @if(session('error'))
-                            <div class=" alert alert-danger" role="alert">
-                                    {{session('error')}}
-                            </div> 
+                    <div class=" col-md-8 mx-auto">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                            </div>
                         @endif
-                   
+                    </div>
+            
+                    <div class=" col-md-8 mx-auto">
+                        @if(Session::get('error'))
+                            <div class="alert alert-danger">
+                                {{Session::get('error')}}
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class=" col-md-4 mx-auto">
+                        @if(Session::get('status'))
+                            <div class="alert alert-success">
+                                {{Session::get('status')}}
+                            </div>
+                        @endif
                     </div>
 
             @yield('content')

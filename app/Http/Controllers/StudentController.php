@@ -6,6 +6,7 @@ use App\Lecture;
 use App\Student;
 use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
@@ -55,7 +56,10 @@ class StudentController extends Controller
 
         $student->save();
 
-        return redirect()->route('students.index');
+        Session::flash('status', 'Uzregistruotas naujas moksleivis!');
+
+        return redirect()->back();
+
     }
 
     /**

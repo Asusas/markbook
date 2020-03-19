@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Lecture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class LectureController extends Controller
 {
@@ -47,7 +48,10 @@ class LectureController extends Controller
 
         $lecture->save();
 
-        return redirect()->route('students.index');
+        Session::flash('status', 'Sukurta nauja pamoka!');
+
+        return redirect()->back();
+
     }
 
     /**
