@@ -73,7 +73,20 @@ class StudentController extends Controller
 
         $lecture = Lecture::all();
         $student = Student::findOrFail($id);
-        return view('project.studentInfo', compact(['student', 'lecture']));
+        
+        $gradeAverages = [];
+        
+        // einu per visas paskaitas ir skaiciuoju ju vidurki konkreciam studentui
+        foreach($lecture as $item) {
+            
+            // Krepiames i modelio funkcija suskaiciuoti konkrecios paskaitos ir konkretaus studento vidurki
+            $value = $student->gradeAverageByLecture($item->id);
+            
+            // pridedu reiksmes i masyva
+            $gradeAverages[] = $value;
+        }
+        
+        return view('project.studentInfo', compact(['student', 'lecture', 'gradeAverages']));
 
     }
 
